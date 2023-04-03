@@ -1,0 +1,97 @@
+.app {
+  display: flex;
+  align-items: center;
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background: var(--clr-white);
+  color: var(--clr-grey-1);
+  line-height: 1.5;
+}
+form {
+  margin-left: 100px;
+  padding: 30px 60px;
+  border-radius: 10px;
+}
+.btn-join {
+  color: hsl(209, 61%, 16%);
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 1.25rem;
+  text-transform: none !important;
+}
+
+.tag {
+  display: flex;
+  color: #3d3d39;
+  width: 200px;
+  justify-content: center;
+  font-size: 0.8rem;
+  text-align: center;
+  text-transform: none !important;
+  margin: auto;
+  padding-bottom: 10px;
+}
+.btn {
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  border: none;
+  background-color: #ffdd83;
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 15px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+}
+.btn-2 {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  border: none;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: 30px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.btn:hover {
+  background-color: #e0b651;
+}
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background: var(--clr-white);
+  color: var(--clr-grey-1);
+  line-height: 1.5;
+  font-size: 0.875rem;
+}
+.form-join {
+  flex: 1;
+}
+.icon {
+  margin-right: 5px;
+  font-size: 15px;
+  display: flex;
+}
+.img {
+  margin-left: 120px;
+  height: 100vh;
+  width: 50vh;
+  background-image: url("Fotor_AI.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  flex: 1;
+}
