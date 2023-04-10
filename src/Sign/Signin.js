@@ -1,9 +1,10 @@
-import FormInput from "./FormInput";
-import { inputs } from "../LandingPage/Data";
+import SignInput from "./SignInput";
+import { input } from "../LandingPage/Data";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import "./Form.css";
-import Float from "../Sign/FloatAnime/Float";
+import "./Signin.css";
+import { useNavigate } from "react-router-dom";
+import Float from "./FloatAnime/Float";
 import React from "react";
 
 function Form() {
@@ -14,6 +15,7 @@ function Form() {
 
     password: "",
   });
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,8 +34,8 @@ function Form() {
         <p className="tag">
           Join our community today and be a part of something truly special.
         </p>
-        {inputs.map((input) => (
-          <FormInput
+        {input.map((input) => (
+          <SignInput
             key={input.id}
             {...input}
             value={values[input.name]}
@@ -41,16 +43,29 @@ function Form() {
           />
         ))}
         <button className="btn" type="button">
-          Create account
+          Sign in
         </button>
+
+        <p className="or">or</p>
         <button className="btn-2" type="button">
           <div className="icon">
             <FcGoogle />
           </div>
-          Sign up with Google
+          <p style={{ color: "#36454F" }}>Sign in with Google</p>
         </button>
+        <p className="Do" style={{ color: " #CCCCCC" }}>
+          Don't have an account ?{" "}
+          <p
+            className="Signup-btn"
+            onClick={() => navigate("/Form")}
+            style={{ fontWeight: "bold", color: "#36454F" }}
+          >
+            &nbsp; Sign up
+          </p>
+        </p>
       </form>
-      <div className="imgj">
+
+      <div className="imgi">
         <Float />
       </div>
     </main>

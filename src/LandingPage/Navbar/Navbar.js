@@ -1,8 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
+import Form from "../../From/Form";
 import { Pagelink, socialLinks } from "../Data";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const Navigate = useNavigate();
+  const navLinkstyles = ({ isActive }) => {
+    return {
+      fontWeight: isActive ? "bold" : "normal",
+    };
+  };
   return (
     <nav className="navbar">
       <div className="nav-center">
@@ -13,7 +22,7 @@ const Navbar = () => {
         <ul className="nav-links" id="nav-links">
           {Pagelink.map((link) => {
             return (
-              <li key={link.id}>
+              <li styles={navLinkstyles} key={link.id}>
                 <a href={link.href} className="nav-link">
                   {link.text}
                 </a>
@@ -23,9 +32,13 @@ const Navbar = () => {
         </ul>
 
         <ul className="nav-icons">
-          <li className="nav-sign">Sign in</li>
+          <li onClick={() => Navigate("Sign-in")} className="nav-sign">
+            Sign in
+          </li>
           <button type="button" className="nav-icon">
-            Sign up
+            <Link to="/Form" style={{ color: "white" }}>
+              Create account
+            </Link>
           </button>
         </ul>
       </div>

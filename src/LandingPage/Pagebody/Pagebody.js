@@ -1,23 +1,21 @@
 import React from "react";
 import { body } from "../Data";
-
+import { Link } from "react-router-dom";
 import "./Pagebody.css";
+
 const Pagebody = () => {
+  const handleClick = () => {
+    window.location.href = "https://discord.gg/xyDeDKx6HG";
+  };
+
   return (
-    <div>
-      {body.map((page) => {
-        return (
-          <div className="center" key={page.id}>
-            <img className="fix" src={page.image} alt="girl" />
-          </div>
-        );
-      })}
+    <div className="Show">
       <div className="container">
-        <h2>Discover</h2>
+        <h1>Discover</h1>
         <h1>Yourself in a</h1>
-        <h1>Captivating Book</h1>
-        <button className="join" type="button" href="">
-          Join the club
+        <h1>Captivating Book.</h1>
+        <button onClick={handleClick} className="join" type="button" href="">
+          Join the club{" "}
         </button>
       </div>
     </div>
