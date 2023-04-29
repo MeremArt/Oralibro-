@@ -77,7 +77,7 @@ function Form() {
             </div>
 
             <button type="submit" className="btn btn-block">
-              Sign in
+              Sign up
             </button>
             <button className="btn-2" type="button">
               <div className="icon">

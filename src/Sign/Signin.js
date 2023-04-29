@@ -1,4 +1,3 @@
-import SignInput from "./SignInput";
 import { input } from "../LandingPage/Data";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
@@ -9,7 +8,7 @@ import React from "react";
 
 function Form() {
   const [value, setValue] = useState(0);
-
+  const Navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -83,8 +82,18 @@ function Form() {
               <div className="icon">
                 <FcGoogle />
               </div>
-              Sign up with Google
+              Sign in with Google
             </button>
+            <p className="Do" style={{ color: " #CCCCCC" }}>
+              Don't have an account ?{" "}
+              <p
+                className="Signup-btn"
+                onClick={() => Navigate("/Form")}
+                style={{ fontWeight: "bold", color: "#36454F" }}
+              >
+                &nbsp; Sign up
+              </p>
+            </p>
           </form>
         </div>
 
