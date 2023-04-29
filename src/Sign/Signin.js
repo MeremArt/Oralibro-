@@ -8,67 +8,91 @@ import Float from "./FloatAnime/Float";
 import React from "react";
 
 function Form() {
-  const [name, setName] = useState();
-  const [values, setValues] = useState({
-    name: "",
-    email: "",
-
-    password: "",
-  });
-  const navigate = useNavigate();
+  const [value, setValue] = useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setValues("");
-  };
 
-  const onChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-    setName(e.target.value);
+    const formData = new FormData(e.currentTarget);
+    // get values one by one
+    const name = formData.get("name");
+    console.log(name);
+    // get all of them
+    const newUser = Object.fromEntries(formData);
+    // do something (post request, add to list, etc)
+    console.log(newUser);
+    // Gotcha - re-render won't clear out the values
+    setValue(value + 1);
+    // reset values
+    e.currentTarget.reset();
   };
 
   return (
-    <main className="app">
-      <form classname="form-join" onSubmit={handleSubmit}>
-        <h1 className="btn-join">Join our community! </h1>
-        <p className="tag">
-          Join our community today and be a part of something truly special.
-        </p>
-        {input.map((input) => (
-          <SignInput
-            key={input.id}
-            {...input}
-            value={values[input.name]}
-            onChange={onChange}
-          />
-        ))}
-        <button className="btn" type="button">
-          Sign in
-        </button>
+    <>
+      <article className="form-top">
+        <h1 className="btn-com">Welcome back! </h1>
+        <p className="tag-com">Welcome back! please enter your details</p>
+      </article>
+      <main className="con">
+        <div className="formcon">
+          <form className="form" onSubmit={handleSubmit}>
+            {/* name */}
+            <div className="form-row">
+              <label htmlFor="name" className="form-label">
+                Name
+              </label>
+              <input
+                type="text"
+                className="form-input"
+                id="name"
+                name="name"
+                placeholder="name"
+              />
+            </div>
+            {/* email */}
+            <div className="form-row">
+              <label htmlFor="email" className="form-label">
+                Email
+              </label>
+              <input
+                type="email"
+                className="form-input"
+                id="email"
+                name="email"
+                placeholder="email@example.com"
+              />
+            </div>
+            {/* email */}
+            <div className="form-row">
+              <label htmlFor="password" className="form-label">
+                Password
+              </label>
+              <input
+                type="password"
+                className="form-input"
+                id="password"
+                name="password"
+                placeholder="password"
+              />
+            </div>
 
-        <p className="or">or</p>
-        <button className="btn-2" type="button">
-          <div className="icon">
-            <FcGoogle />
-          </div>
-          <p style={{ color: "#36454F" }}>Sign in with Google</p>
-        </button>
-        <p className="Do" style={{ color: " #CCCCCC" }}>
-          Don't have an account ?{" "}
-          <p
-            className="Signup-btn"
-            onClick={() => navigate("/Form")}
-            style={{ fontWeight: "bold", color: "#36454F" }}
-          >
-            &nbsp; Sign up
-          </p>
-        </p>
-      </form>
+            <button type="submit" className="btn btn-block">
+              Sign in
+            </button>
+            <button className="btn-2" type="button">
+              <div className="icon">
+                <FcGoogle />
+              </div>
+              Sign up with Google
+            </button>
+          </form>
+        </div>
 
-      <div className="imgi">
-        <Float />
-      </div>
-    </main>
+        <div className="imgi">
+          <Float />
+        </div>
+      </main>
+    </>
   );
 }
 

@@ -14,7 +14,7 @@ const Pagebody = () => {
         <h1>Discover</h1>
         <h1>Yourself in a</h1>
         <h1>Captivating Book.</h1>
-        <button onClick={handleClick} className="join" type="button" href="">
+        <button onClick={handleClick} className="join" type="button">
           Join the club{" "}
         </button>
       </div>
