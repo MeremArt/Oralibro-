@@ -112,7 +112,7 @@ function Form() {
         <div className="imgi">
           <Float />
         </div>
-// this component is neccessary to display toast
+{/* this component is neccessary to display toast -- deckk */}
   <ToastContainer />
       </main>
     </>
