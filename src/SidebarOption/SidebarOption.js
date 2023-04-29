@@ -3,10 +3,10 @@ import "./SidebarOption.css";
 
 function SidebarOption({ title, id, Icon }) {
   return (
-    <div className="sidebarOption">
+    <a href=`${title.replace(/\s/g, " ").replace(/\s/g, "")}`><div className="sidebarOption">
       {Icon && <Icon className="sidebarOption__icon" />}
       {Icon ? <h4>{title}</h4> : <p>{title}</p>}
-    </div>
+    </div></a>
   );
 }
 
