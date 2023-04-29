@@ -121,8 +121,8 @@ body::-webkit-scrollbar {
   font-weight: bold;
   font-size: 12px;
   cursor: pointer;
-  margin-top: 15px;
-  margin-bottom: 30px;
+  margin-top: -8px;
+
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 .btn-2:hover {
