@@ -5,7 +5,7 @@ import "./Form.css";
 import Float from "../Sign/FloatAnime/Float";
 import React from "react";
 //added by decklan.
-import {signUp} from "../server/functions";
+import {signUp} from "../ServerFunctions";
 //Run, npm install react-toastify
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
