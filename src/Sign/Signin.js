@@ -23,9 +23,12 @@ function Form() {
     
     //  check if any field is empty
     if( email.length != '' & password.length!= ''){
-      signIn(email,password).then(runState=>{
-        if(runState)
-        {toast.success('Sign in successful, loggin u in....'); }
+      signIn(email,password).then(data=>{
+        if(data.runState)
+        {toast.success('Sign in successful, loggin u in....'); 
+        localStorage.setItem('sessionToken',data.token);
+        window.location.href = 'REPLACE_THIS_STRING_WITH_YOUR_DASHBOARD_URL'; //REDIRECT USER TO DASHBOARD
+        }
         else{toast.error('email or password is incorrect);}
         e.currentTarget.reset();
       });
