@@ -56,7 +56,7 @@ function Form() {
       </article>
       <main className="con">
         <div className="formcon">
-          <form className="form" onSubmit={handleSubmit}>
+          <form className="form" onSubmit={(event)=>handleSubmit(e)}>
             {/* name */}
             <div className="form-row">
               <label htmlFor="name" className="form-label">
