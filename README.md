@@ -10,4 +10,4 @@ This is a project amind to give people of literature tools to help advance thier
 
 
 ## Credits
-This was built by Ugo Chinemerem.
+ Built by Ugo Chinemerem & Deckaln orie.
