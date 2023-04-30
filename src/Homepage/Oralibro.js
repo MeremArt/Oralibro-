@@ -55,8 +55,8 @@ return (
         <Sidebar />
       </div>
     </div>
-  );
-}; /*}
+  ); */}
+};
 };
 
 export default Oralibro;
