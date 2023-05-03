@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Float from "./FloatAnime/Float";
 import React from "react";
 //added by decklan.
-import {signIn} from "../ServerFunctions";
+import {signIn} from "../../ServerFunctions";
 //Run, npm install react-toastify
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -29,7 +29,7 @@ function Form() {
         localStorage.setItem('sessionToken',data.token);
         window.location.href = 'REPLACE_THIS_STRING_WITH_YOUR_DASHBOARD_URL'; //REDIRECT USER TO DASHBOARD
         }
-        else{toast.error('email or password is incorrect);}
+        else{toast.error('email or password is incorrect');}
         e.currentTarget.reset();
       });
     }else{
