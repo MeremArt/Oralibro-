@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Float from "./FloatAnime/Float";
 import React from "react";
 //added by decklan.
-import { signIn } from "../../ServerFunctions";
+import { signIn } from "../ServerFunctions";
 //Run, npm install react-toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

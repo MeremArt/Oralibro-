@@ -5,11 +5,10 @@ import "./Form.css";
 import Float from "../Sign/FloatAnime/Float";
 import React from "react";
 //added by decklan.
-import {signUp} from "../../ServerFunctions";
+import { signUp } from "../ServerFunctions";
 //Run, npm install react-toastify
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Form() {
   const [value, setValue] = useState(0);
@@ -21,28 +20,29 @@ function Form() {
     const name = formData.get("name");
     const email = formData.get("email");
     const password = formData.get("password");
-    
-//     check if any field is empty
-    if(name.length != '' && email.length != '' & password.length!= ''){
-      signUp(name,email,password).then(runState=>{
-        if(runState)
-        {toast.success('Sign up successful, procees to sign in page'); }
-        else{toast.error('Something went wrong, we couldn\'t sign u in.');}
+
+    //     check if any field is empty
+    if (name.length != "" && (email.length != "") & (password.length != "")) {
+      signUp(name, email, password).then((runState) => {
+        if (runState) {
+          toast.success("Sign up successful, procees to sign in page");
+        } else {
+          toast.error("Something went wrong, we couldn't sign u in.");
+        }
         e.currentTarget.reset();
       });
-    }else{
-     toast.error('Please fill all fields'); 
+    } else {
+      toast.error("Please fill all fields");
     }
-    
-//     console.log(name);
-//     // get all of them
-//     const newUser = Object.fromEntries(formData);
-//     // do something (post request, add to list, etc)
-//     console.log(newUser);
-//     // Gotcha - re-render won't clear out the values
+
+    //     console.log(name);
+    //     // get all of them
+    //     const newUser = Object.fromEntries(formData);
+    //     // do something (post request, add to list, etc)
+    //     console.log(newUser);
+    //     // Gotcha - re-render won't clear out the values
     setValue(value + 1);
     // reset values
-    
   };
 
   return (
@@ -56,7 +56,7 @@ function Form() {
       </article>
       <main className="con">
         <div className="formcon">
-          <form className="form" onSubmit={(event)=>handleSubmit(event)}>
+          <form className="form" onSubmit={(event) => handleSubmit(event)}>
             {/* name */}
             <div className="form-row">
               <label htmlFor="name" className="form-label">
@@ -112,8 +112,8 @@ function Form() {
         <div className="imgi">
           <Float />
         </div>
-{/* this component is neccessary to display toast -- deckk */}
-  <ToastContainer />
+        {/* this component is neccessary to display toast -- deckk */}
+        <ToastContainer />
       </main>
     </>
   );
