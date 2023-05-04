@@ -6,49 +6,41 @@ import { useNavigate } from "react-router-dom";
 import Float from "./FloatAnime/Float";
 import React from "react";
 //added by decklan.
-import {signIn} from "../../ServerFunctions";
+import { signIn } from "../../ServerFunctions";
 //Run, npm install react-toastify
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Form() {
   const [value, setValue] = useState(0);
   const Navigate = useNavigate();
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
-    
-    
-    //  check if any field is empty
-    if( email.length != '' & password.length!= ''){
-      signIn(email,password).then(data=>{
-        if(data.runState)
-        {toast.success('Sign in successful, loggin u in....'); 
-        localStorage.setItem('sessionToken',data.token);
-        window.location.href = 'REPLACE_THIS_STRING_WITH_YOUR_DASHBOARD_URL'; //REDIRECT USER TO DASHBOARD
+
+    // Get email and password values from form data
+    const email = formData.get("email");
+    const password = formData.get("password");
+
+    // Check if any field is empty
+    if (email !== "" && password !== "") {
+      signIn(email, password).then((data) => {
+        if (data.runState) {
+          toast.success("Sign in successful, logging you in....");
+          localStorage.setItem("sessionToken", data.token);
+          window.location.href = "REPLACE_THIS_STRING_WITH_YOUR_DASHBOARD_URL"; // REDIRECT USER TO DASHBOARD
+        } else {
+          toast.error("Email or password is incorrect");
         }
-        else{toast.error('email or password is incorrect');}
         e.currentTarget.reset();
       });
-    }else{
-     toast.error('Please fill all fields'); 
+    } else {
+      toast.error("Please fill all fields");
     }
-    
-  
-    
-    
-//     // get values one by one
-//     const name = formData.get("name");
-//     console.log(name);
-//     // get all of them
-//     const newUser = Object.fromEntries(formData);
-//     // do something (post request, add to list, etc)
-//     console.log(newUser);
-//     // Gotcha - re-render won't clear out the values
+
     setValue(value + 1);
-    // reset values
   };
 
   return (
@@ -59,23 +51,7 @@ function Form() {
       </article>
       <main className="con">
         <div className="formcon">
-          <form className="form" onSubmit={(event)=>handleSubmit(event)}>
-      {/* i commented this out because signin screen should just contain email and password, no need for name
-    let me know if u want to uncomment this so i can add functionality for it -- deckk
-           
-            <div className="form-row">
-              <label htmlFor="name" className="form-label">
-                Name
-              </label>
-              <input
-                type="text"
-                className="form-input"
-                id="name"
-                name="name"
-                placeholder="name"
-              />
-            </div>*/}
-            {/* email */}
+          <form className="form" onSubmit={(event) => handleSubmit(event)}>
             <div className="form-row">
               <label htmlFor="email" className="form-label">
                 Email
@@ -88,7 +64,7 @@ function Form() {
                 placeholder="email@example.com"
               />
             </div>
-            {/* email */}
+            {/* Password field */}
             <div className="form-row">
               <label htmlFor="password" className="form-label">
                 Password
@@ -101,16 +77,18 @@ function Form() {
                 placeholder="password"
               />
             </div>
-
+            {/* Sign in button */}
             <button type="submit" className="btn btn-block">
               Sign in
             </button>
+            {/* Sign in with Google button */}
             <button className="btn-2" type="button">
               <div className="icon">
                 <FcGoogle />
               </div>
               Sign in with Google
             </button>
+
             <p className="Do" style={{ color: " #CCCCCC" }}>
               Don't have an account ?{" "}
               <p
@@ -127,8 +105,8 @@ function Form() {
         <div className="imgi">
           <Float />
         </div>
-{/* this component is neccessary to display toast --deckk */}
-  <ToastContainer />
+        {/* this component is neccessary to display toast --deckk */}
+        <ToastContainer />
       </main>
     </>
   );
