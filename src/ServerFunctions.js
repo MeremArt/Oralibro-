@@ -1,8 +1,7 @@
-// run: npm install firebase
 import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
   projectId: process.env.REACT_APP_PROJECT_ID,
@@ -13,12 +12,12 @@ var firebaseConfig = {
 };
 
 // Initialize Firebase
-var app = initializeApp(firebaseConfig);
-var db = getFirestore(app);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-export default async function signUp(name, email, password) {
+export async function signUp(name, email, password) {
   try {
-    var docRef = doc(db, "users");
+    const docRef = doc(db, "users", email);
     await setDoc(docRef, {
       name: name,
       email: email,
@@ -31,21 +30,25 @@ export default async function signUp(name, email, password) {
   }
 }
 
- export default async function signIn(email,password){
-   try{
-   const docRef = doc(db, 'users', email);
+export async function signIn(email, password) {
+  try {
+    const docRef = doc(db, "users", email);
     const docSnapshot = await getDoc(docRef);
-    if(docSnapshot.exists()){
-     const token = Date.now();
-      setDoc(docRef, {
-        'token':token,
-      },{merge:true});
-      return  {'runState':true,'token':token};
-    }else{
-     return  {'runState':false};
+    if (docSnapshot.exists()) {
+      const token = Date.now();
+      await setDoc(
+        docRef,
+        {
+          token: token,
+        },
+        { merge: true }
+      );
+      return { runState: true, token: token };
+    } else {
+      return { runState: false };
     }
-   }catch(e){
-     console.log(e);
-     return {'runState':false};
-   }
-   }
+  } catch (e) {
+    console.log(e);
+    return { runState: false };
+  }
+}
