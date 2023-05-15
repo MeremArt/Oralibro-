@@ -1,0 +1,11 @@
+.fix {
+  position: relative;
+  /* left: 650px; */
+
+  display: flex;
+  bottom: 350px;
+}
+.sidebar-fix {
+  background-color: #e95900;
+  max-width: 250px;
+}

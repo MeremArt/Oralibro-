@@ -1,54 +1,41 @@
 import React from "react";
-import Sidebar from "../Sidebar/Sidebar";
-import { BrowserRouter, Route } from "react-router-dom";
-const Oralibro = () => {
+import { Routes, Route } from "react-router-dom";
+import Topbar from "./Global/Topbar";
+
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { ColorModeContext, useMode } from "../theme";
+import { themeSettings } from "../theme";
+import { useState } from "react";
+import Sidebar from "./Global/Sidebar";
+function Oralibro() {
+  const [theme, colorMode] = useMode();
+  const [isSidebar, setIsSidebar] = useState(true);
+
   return (
-    <div className="container">
-      <div className="row">
-        <div className="d-none d-md-block col-4">
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <div className="app">
           <Sidebar />
+          <main className="content">
+            <Topbar />
+            <Routes>
+              {/*               
+              <Route path="/team" element={<Team />} />
+              <Route path="/contacts" element={<Contacts />} />
+              <Route path="/invoices" element={<Invoices />} />
+              <Route path="/form" element={<Form />} />
+              <Route path="/bar" element={<Bar />} />
+              <Route path="/pie" element={<Pie />} />
+              <Route path="/line" element={<Line />} />
+              <Route path="/faq" element={<FAQ />} />
+              <Route path="/calendar" element={<Calendar />} />
+              <Route path="/geography" element={<Geography />} /> */}
+            </Routes>
+          </main>
         </div>
-        <div className="col-sm12 col-md-8 col-lg-8 col-xl-4">
-          <BrowserRouter>
-            <Route>
-              <Route path="/">
-                {/* the router here checks the ur url path and whenever a route matche the specified path, it returns the corresponding component,
-  example if path matches Discover it returns the <Discover /> page/component.
-  So to switch between components, when a component is clicked in the side bar i have added a <a href></a> in the sidebar options bar
-  to redirect to the corresponding path equal to the title (without space or '&').
-  then the the route here automatically changes to the corresponding route of that path * */}
-                {/* uncomment whatever component is ready. i commented them so as not to throw exception/error
-                 */}
-                {/* <Route path="Discover" element={<Discover />} />
-                <Route path="Podcast" element={<Podcast />} />
-                <Route path="ReviewsRatings" element={<ReviewsRatings />} />
-                <Route path="BookSwap" element={<BookSwap />} />
-                <Route
-                  path="ReadingChallenges"
-                  element={<ReadingChallenges />}
-                />
-                <Route
-                  path="BookRecomendations"
-                  element={<BookRecomendations />}
-                />
-                <Route path="AuthorSpotlight" element={<AuthorSpotlight />} />
-                <Route path="EventsCalender" element={<EventsCalender />} />
-                <Route path="Bookstore" element={<Bookstore />} /> */}
-              </Route>{" "}
-            </Route>
-          </BrowserRouter>
-        </div>
-      </div>
-    </div>
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
-  // //  uncomment ur code and comment mine, if u dont understand mine and want to use urs
-  // return (
-  //   <div className="player">
-  //     <div className="player__body">
-  //       <Sidebar />
-  //     </div>
-  //   </div>
-  // );
-};
+}
 
 export default Oralibro;
