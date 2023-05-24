@@ -68,6 +68,7 @@ function Form() {
                 id="name"
                 name="name"
                 placeholder="name"
+                autoComplete="name"
               />
             </div>
             {/* email */}
@@ -81,6 +82,7 @@ function Form() {
                 id="email"
                 name="email"
                 placeholder="email@example.com"
+                autoComplete="email"
               />
             </div>
             {/* email */}
@@ -94,6 +96,7 @@ function Form() {
                 id="password"
                 name="password"
                 placeholder="password"
+                autoComplete="password"
               />
             </div>
 
