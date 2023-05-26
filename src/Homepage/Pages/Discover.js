@@ -1,28 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+import Header from "../Header";
 const Discover = () => {
   return (
     <Cover>
-      <div>
-        <h2>Discover</h2>
-        <h2>Discover</h2>
-        <h2>Discover</h2>
-        <h2>Discover</h2>
-        <h2>Discover</h2>
-        <h2>Discover</h2>
-        <h2>Discover</h2>
-      </div>
+      <Header />
     </Cover>
   );
 };
 
-const Cover = styled.section`
-  h2 {
-    position: relative;
-    left: 500px;
-    bottom: 350px;
-    display: flex;
-  }
-`;
+const Cover = styled.section``;
 
 export default Discover;

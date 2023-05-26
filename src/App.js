@@ -8,9 +8,6 @@ import Discover from "./Homepage/Pages/Discover";
 import Nomatch from "./Nomatch/Nomatch";
 import Signin from "./Sign/Signin";
 import Sidebar from "./Homepage/Global/Sidebar";
-import DashboardLayout from "./layouts/Dashboard";
-import PayPage from "./PayPage";
-import BuyPage from "./BuyPage";
 
 function App() {
   return (

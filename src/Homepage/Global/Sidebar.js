@@ -3,7 +3,7 @@ import { useState } from "react";
 import { ProSidebarProvider, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
-
+import styled from "styled-components";
 import { tokens } from "../../theme";
 
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
@@ -74,7 +74,7 @@ const Sidebar = () => {
                 color={colors.primary[300]}
                 sx={{ m: "15px 0 5px 20px" }}
               >
-                Data
+                {/* <p className="p">Data</p> */}
               </Typography>
               <Item
                 title="Discover"
@@ -104,7 +104,7 @@ const Sidebar = () => {
                 color={colors.primary[300]}
                 sx={{ m: "15px 0 5px 20px" }}
               >
-                Page turners
+                {/* <p>Page turners</p> */}
               </Typography>
               <Item
                 title="Book Swap"
@@ -133,7 +133,7 @@ const Sidebar = () => {
                 color={colors.primary[300]}
                 sx={{ m: "15px 0 5px 20px" }}
               >
-                Features
+                {/* <p> Features</p> */}
               </Typography>
               <Item
                 title="Author Spotlight"
