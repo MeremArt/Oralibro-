@@ -1,41 +1,59 @@
 import React from "react";
 import { useState } from "react";
-import { ProSidebarProvider, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
-import { Box, IconButton, Typography, useTheme } from "@mui/material";
+import { ProSidebarProvider, Menu, MenuItem } from "react-pro-sidebar";
+import { Box, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 import { tokens } from "../../theme";
 
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
-import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
-import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
+import SettingsIcon from "@mui/icons-material/Settings";
 import ExploreIcon from "@mui/icons-material/Explore";
 import ReviewsIcon from "@mui/icons-material/Reviews";
 import PodcastsIcon from "@mui/icons-material/Podcasts";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   return (
     <MenuItem
       active={selected === title}
       style={{
-        color: colors.black[100],
+        color: selected === title ? "#FE8E5C" : colors.black[100],
       }}
       onClick={() => setSelected(title)}
-      icon={icon}
+      icon={React.cloneElement(icon, {
+        style: {
+          color: selected === title ? "#121212" : colors.black[100],
+        },
+      })}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <Link to={to} style={{ textDecoration: "none", color: "inherit" }}>
-        <Typography>{title}</Typography>
+        <Typography
+          style={{
+            color: isHovered ? colors.black[900] : "inherit",
+          }}
+        >
+          {title}
+        </Typography>
       </Link>
     </MenuItem>
   );
@@ -51,16 +69,18 @@ const Sidebar = () => {
     <div className="sidebar-fix">
       <ProSidebarProvider collapsed={isCollapsed}>
         <Box
-          sx={
-            {
-              // Styling for the sidebar
-            }
-          }
+          sx={{
+            "& .pro-icon-wrapper": {
+              backgroundColor: "transparent !important",
+            },
+
+            "& .pro-menu-item.active": {
+              color: "#3D58C2 !important",
+            },
+          }}
         >
           <Menu>
-            {/* Sidebar content */}
-            {/* ... */}
-            <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+            <Box>
               <Item
                 title="Dashboard"
                 to="/oralibro/dashboard"
@@ -72,14 +92,20 @@ const Sidebar = () => {
               <Typography
                 variant="h6"
                 color={colors.primary[300]}
-                sx={{ m: "15px 0 5px 20px" }}
-              >
-                {/* <p className="p">Data</p> */}
-              </Typography>
+                sx={{ m: "5px 0 -10px 20px" }}
+              ></Typography>
               <Item
                 title="Discover"
                 to="/oralibro/Discover"
-                icon={<ExploreIcon />}
+                icon={
+                  <ExploreIcon
+                    sx={{
+                      ":hover": {
+                        color: "red",
+                      },
+                    }}
+                  />
+                }
                 selected={selected}
                 setSelected={setSelected}
               />
@@ -97,15 +123,12 @@ const Sidebar = () => {
                 selected={selected}
                 setSelected={setSelected}
               />
-              {/* ... */}
 
               <Typography
                 variant="h6"
                 color={colors.primary[300]}
-                sx={{ m: "15px 0 5px 20px" }}
-              >
-                {/* <p>Page turners</p> */}
-              </Typography>
+                sx={{ m: "0px 0 0px 20px" }}
+              ></Typography>
               <Item
                 title="Book Swap"
                 to="/form"
@@ -121,7 +144,7 @@ const Sidebar = () => {
                 setSelected={setSelected}
               />
               <Item
-                title="Recommendations"
+                title="Recommendation"
                 to="/faq"
                 icon={<HelpOutlineOutlinedIcon />}
                 selected={selected}
@@ -131,10 +154,8 @@ const Sidebar = () => {
               <Typography
                 variant="h6"
                 color={colors.primary[300]}
-                sx={{ m: "15px 0 5px 20px" }}
-              >
-                {/* <p> Features</p> */}
-              </Typography>
+                sx={{ m: "0px 0 0px 20px" }}
+              ></Typography>
               <Item
                 title="Author Spotlight"
                 to="/bar"
@@ -156,10 +177,22 @@ const Sidebar = () => {
                 selected={selected}
                 setSelected={setSelected}
               />
+              <Typography
+                variant="h6"
+                color={colors.primary[300]}
+                sx={{ m: "13px 0 0px 20px" }}
+              ></Typography>
               <Item
                 title="Settings"
                 to="/geography"
-                icon={<MapOutlinedIcon />}
+                icon={<SettingsIcon />}
+                selected={selected}
+                setSelected={setSelected}
+              />
+              <Item
+                title="logout"
+                to="/geography"
+                icon={<LogoutIcon />}
                 selected={selected}
                 setSelected={setSelected}
               />

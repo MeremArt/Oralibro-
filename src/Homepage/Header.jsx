@@ -11,14 +11,13 @@ export default function Header() {
           <header className="header">
             <div className="header-content flex flex-c text-center text-white">
               <h2 className="header-title text-capitalize">
-                find your book of choice.
+                Find your book of choice.
               </h2>
               <br />
-              <p className="header-text fs-18 fw-3">
+              <p className="header-text ">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
                 beatae sapiente quibusdam consequatur perspiciatis facere
                 laboriosam non nesciunt at id repudiandae, modi iste? Eligendi,
-                rerum!
               </p>
             </div>
           </header>
@@ -38,20 +37,29 @@ const Head = styled.section`
     align-items: center;
   }
   .header-title {
-    font-size: 4.2rem;
+    font-size: 36px;
+    color: 121212;
   }
   .holder {
     position: relative;
     bottom: 270px;
     margin: auto;
+    right: 20px;
   }
   .header-text {
-    margin-top: -1.8rem;
+    margin-top: -16px;
     margin-bottom: 2.8rem;
-    opacity: 0.8;
+    // opacity: 0.8;
     max-width: 770px;
+    margin-left: 10px;
+    text-align: center;
+    color: #55555;
+    font-size: 16px;
+    align-items: center;
   }
   .search {
-    align-items: center;
+    position: relative;
+    bottom: 200px;
+    left: 200px;
   }
 `;

@@ -1,55 +1,32 @@
-import { Box, IconButton, useTheme } from "@mui/material";
-import { useContext } from "react";
-import { ColorModeContext, tokens } from "../../theme";
-import InputBase from "@mui/material/InputBase";
-import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
-import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import SearchIcon from "@mui/icons-material/Search";
-
-const Topbar = () => {
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
-  const colorMode = useContext(ColorModeContext);
+import React from "react";
+import styled from "styled-components";
+import SearchBar from "./SearchBar";
+export const Topbar = () => {
   return (
-    <Box display="flex" justify-content="space-between" p={2}>
-      {/*searchbar*/}
-      <Box
-        className="fix"
-        display="flex"
-        backgroundColor={colors.primary[400]}
-        borderRadius="3px"
-        // position="relative"
-        // bottom="400px"
-      >
-        <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search" />
-        <IconButton type="button" sx={{ p: 1 }}>
-          <SearchIcon />
-        </IconButton>
-      </Box>
-      {/*icons*/}
-      <Box display="flex" className="fix" backgroundColor={colors.primary[400]}>
-        <IconButton onClick={colorMode.toggleColorMode}>
-          {theme.palette.mode === "dark" ? (
-            <DarkModeOutlinedIcon />
-          ) : (
-            <LightModeOutlinedIcon />
-          )}
-        </IconButton>
-        <IconButton>
-          <NotificationsOutlinedIcon />
-        </IconButton>
-        {/* <IconButton>
-          <SettingsOutlinedIcon />
-        </IconButton> */}
-        {/* <IconButton>
-          <PersonOutlinedIcon />
-        </IconButton> */}
-      </Box>
-    </Box>
+    <TopNav>
+      <div>
+        <section className="Topnav">
+          <h2>Oralibro</h2>
+          <SearchBar />
+        </section>
+      </div>
+    </TopNav>
   );
 };
+const TopNav = styled.section`
+  .Topnav {
+    box-sizing: border-box;
 
-export default Topbar;
+    position: absolute;
+    width: 100%;
+    height: 55px;
+    left: 0px;
+    display: flex;
+    top: 0px;
+    flex-direction: row;
+    /* white */
+
+    background: #fcfbfb;
+    border-bottom: 0.5px solid #dddbdb;
+  }
+`;

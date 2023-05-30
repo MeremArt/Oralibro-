@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Outlet, Routes, Route } from "react-router-dom";
 import styled from "styled-components";
-import Topbar from "./Global/Topbar";
+import { Topbar } from "./Global/Topbar";
 import Dashboard from "./Pages/Dashboard";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "../theme";
@@ -24,8 +24,8 @@ function Oralibro() {
                 <Sidebar />
               </div>
               <div className="content">
-                <Topbar />
                 <Outlet />
+                <Topbar />
               </div>
             </div>
           </ThemeProvider>
@@ -44,9 +44,11 @@ const Wrapper = styled.section`
     bottom: 300px;
   }
   .sidebar-fix {
-    background-color: #06a0ff;
-    max-width: 240px;
-    height: 100vh;
+    background-color: #3d58c2;
+    max-width: 200px;
+    height: 95vh;
+    position: relative;
+    top: 38px;
   }
   .content {
     flex-grow: 1;

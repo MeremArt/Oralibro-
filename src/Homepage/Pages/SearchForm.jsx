@@ -1,28 +1,28 @@
 import React, { useRef, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { useGlobalContext } from "./context";
+import { useGlobalContext } from "./../../context";
 
 import styled from "styled-components";
 
 const SearchForm = () => {
-  //   const { setSearchTerm, setResultTitle } = useGlobalContext();
-  //   const searchText = useRef("");
-  //   const navigate = useNavigate();
+  const { setSearchTerm, setResultTitle } = useGlobalContext();
+  const searchText = useRef("");
+  const navigate = useNavigate();
 
-  //   useEffect(() => searchText.current.focus(), []);
-  //   const handleSubmit = (e) => {
-  //     e.preventDefault();
-  //     let tempSearchTerm = searchText.current.value.trim();
-  //     if (tempSearchTerm.replace(/[^\w\s]/gi, "").length === 0) {
-  //       setSearchTerm("the lost world");
-  //       setResultTitle("Please Enter Something ...");
-  //     } else {
-  //       setSearchTerm(searchText.current.value);
-  //     }
+  useEffect(() => searchText.current.focus(), []);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let tempSearchTerm = searchText.current.value.trim();
+    if (tempSearchTerm.replace(/[^\w\s]/gi, "").length === 0) {
+      setSearchTerm("the lost world");
+      setResultTitle("Please Enter Something ...");
+    } else {
+      setSearchTerm(searchText.current.value);
+    }
 
-  //     navigate("/book");
-  //   };
+    navigate("/book");
+  };
 
   return (
     <>
@@ -30,15 +30,15 @@ const SearchForm = () => {
         <div className="search-form">
           <div className="container">
             <div className="search-form-content">
-              <form className="search-form" onSubmit={""}>
-                <div className="search-form-elem flex flex-sb bg-white">
+              <form className="search-form" onSubmit={"handleSubmit"}>
+                <div className="search-form-elem ">
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Oralibro..."
-                    // ref={searchText}
+                    placeholder="the lost world"
+                    ref={searchText}
                   />
-                  <button type="submit" className="flex flex-c" onClick={""}>
+                  <button type="submit" className="" onClick={"handleSubmit"}>
                     <FaSearch className="text-purple" size={32} />
                   </button>
                 </div>
