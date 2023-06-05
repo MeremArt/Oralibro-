@@ -10,14 +10,13 @@ export default function Header() {
         <div className="holder">
           <header className="header">
             <div className="header-content flex flex-c text-center text-white">
-              <h2 className="header-title text-capitalize">
-                Find your book of choice.
-              </h2>
+              <h2 className="header-title ">Find your book of choice</h2>
               <br />
               <p className="header-text ">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
-                beatae sapiente quibusdam consequatur perspiciatis facere
-                laboriosam non nesciunt at id repudiandae, modi iste? Eligendi,
+                Immerse yourself in the enchanting world of books as you browse
+                through our extensive collection spanning various genres and
+                time periods. From classic literature that has withstood the
+                test of time to contemporary masterpieces that push boundaries
               </p>
             </div>
           </header>
@@ -37,29 +36,40 @@ const Head = styled.section`
     align-items: center;
   }
   .header-title {
-    font-size: 36px;
     color: 121212;
+    margin-right: 70px;
+    position: relative;
+    bottom: 30px;
+    display: flex;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 42px;
   }
   .holder {
     position: relative;
-    bottom: 270px;
+    bottom: 160px;
     margin: auto;
-    right: 20px;
   }
   .header-text {
-    margin-top: -16px;
-    margin-bottom: 2.8rem;
-    // opacity: 0.8;
-    max-width: 770px;
-    margin-left: 10px;
+    position: relative;
+    bottom: 25px;
+    margin-bottom: 0.8rem;
+    line-height: 150%;
+    display: flex;
+    width: 1009px;
+    color: #767676;
+    margin-right: 20px;
     text-align: center;
-    color: #55555;
+
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
     font-size: 16px;
     align-items: center;
   }
   .search {
     position: relative;
-    bottom: 200px;
-    left: 200px;
+    bottom: 10px;
   }
 `;

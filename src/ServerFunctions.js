@@ -52,3 +52,30 @@ export async function signIn(email, password) {
     return { runState: false };
   }
 }
+
+export async function signInWithGoogle(tokenId) {
+  // Implement the logic to handle sign-in with Google
+  // Send the tokenId to your server for verification and user authentication
+  try {
+    // Example code for handling the sign-in with Google using tokenId
+    // You can replace this with your actual implementation
+    const docRef = doc(db, "users", "googleUser");
+    const docSnapshot = await getDoc(docRef);
+    if (docSnapshot.exists()) {
+      const token = Date.now();
+      await setDoc(
+        docRef,
+        {
+          token: token,
+        },
+        { merge: true }
+      );
+      return { runState: true, token: token };
+    } else {
+      return { runState: false };
+    }
+  } catch (e) {
+    console.log(e);
+    return { runState: false };
+  }
+}

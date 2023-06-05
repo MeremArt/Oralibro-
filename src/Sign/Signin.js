@@ -5,8 +5,8 @@ import "./Signin.css";
 import { useNavigate } from "react-router-dom";
 import Float from "./FloatAnime/Float";
 import React from "react";
-//added by decklan.
-import { signIn } from "../ServerFunctions";
+
+import { signIn, signInWithGoogle } from "../ServerFunctions";
 //Run, npm install react-toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -41,6 +41,21 @@ function Form() {
     }
 
     setValue(value + 1);
+  };
+
+  const handleSignInWithGoogle = () => {
+    // Call the signInWithGoogle function from the server functions
+    signInWithGoogle(
+      "87785613655-39u9mg0j3gb6pu8ln74s507vv97lla04.apps.googleusercontent.com"
+    ).then((data) => {
+      if (data.runState) {
+        toast.success("Sign in with Google successful, logging you in....");
+        localStorage.setItem("sessionToken", data.token);
+        window.location.href = "/oralibro"; // REDIRECT USER TO DASHBOARD
+      } else {
+        toast.error("Failed to sign in with Google");
+      }
+    });
   };
 
   return (
@@ -82,7 +97,11 @@ function Form() {
               Sign in
             </button>
             {/* Sign in with Google button */}
-            <button className="btn-2" type="button">
+            <button
+              className="btn-2"
+              type="button"
+              onClick={handleSignInWithGoogle}
+            >
               <div className="icon">
                 <FcGoogle />
               </div>
@@ -105,7 +124,7 @@ function Form() {
         <div className="imgi">
           <Float />
         </div>
-        {/* this component is neccessary to display toast --deckk */}
+        {/* this component is necessary to display toast --decklan */}
         <ToastContainer />
       </main>
     </>

@@ -37,7 +37,7 @@ export default function SearchBar() {
 }
 
 const InputWrapper = styled.section`
-  width: 70%;
+  width: 30%;
   height: 2.5rem;
   margin: auto;
   border: none;
@@ -68,6 +68,5 @@ const InputWrapper = styled.section`
     display: flex;
     align-items: center;
     min-width: 200px;
-    position: relative;
   }
 `;
