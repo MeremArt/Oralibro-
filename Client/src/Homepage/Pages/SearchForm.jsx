@@ -20,7 +20,7 @@ export default function SearchBar() {
       setSearchTerm(searchText.current.value);
     }
 
-    navigate("/book");
+    navigate("/oralibro/discover");
   };
   return (
     <InputWrapper>
