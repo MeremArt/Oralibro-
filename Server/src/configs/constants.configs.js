@@ -5,7 +5,7 @@ module.exports = {
     MAXAGE: 3 * 24 * 60 * 60,
     BASEPATH : "/api/v1",
     ENUM: {
-        GUEST: "guest",
+        USER: "user",
         ADMIN: "admin"
     },
     DATABASES: {
