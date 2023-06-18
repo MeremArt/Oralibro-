@@ -10,7 +10,7 @@ passport.use(
         // options for the strategy
         clientID: GOOGLE_CLIENT_ID,
         clientSecret: GOOGLE_CLIENT_SECRET,
-        callbackURL: `http://localhost:9871/api/v1/auth/google/callback`,
+        callbackURL: `https://oralibro.onrender.com/api/v1/auth/google/callback`,
         passReqToCallback: true
     },
         async (request, accessToken, refreshToken, profile, done) => {
