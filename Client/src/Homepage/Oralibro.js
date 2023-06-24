@@ -15,23 +15,21 @@ function Oralibro() {
   const [isSidebar, setIsSidebar] = useState(true);
 
   return (
-    <>
-      <Wrapper>
-        <ColorModeContext.Provider value={colorMode}>
-          <ThemeProvider theme={theme}>
-            <div className="app">
-              <div className="sidebar">
-                <Sidebar />
-              </div>
-              <div className="content">
-                <Outlet />
-                <Topbar />
-              </div>
+    <Wrapper>
+      <ColorModeContext.Provider value={colorMode}>
+        <ThemeProvider theme={theme}>
+          <div className="app">
+            <div className="sidebar">
+              <Sidebar />
             </div>
-          </ThemeProvider>
-        </ColorModeContext.Provider>
-      </Wrapper>
-    </>
+            <div className="content">
+              <Outlet />
+              <Topbar />
+            </div>
+          </div>
+        </ThemeProvider>
+      </ColorModeContext.Provider>
+    </Wrapper>
   );
 }
 const Wrapper = styled.section`

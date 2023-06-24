@@ -57,81 +57,79 @@ function Form() {
   // reset values
 
   return (
-    <>
-      <FormStyle>
-        <article className="form-top">
-          <h1 className="btn-com">Join our community! </h1>
-          <p className="tag-com">
-            {" "}
-            Join our community today and be a part of something truly special.
-          </p>
-        </article>
-        <main className="con">
-          <div className="formcon">
-            <form className="form" onSubmit={(event) => handleSubmit(event)}>
-              {/* name */}
-              <div className="form-row">
-                <label htmlFor="name" className="form-label">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  className="form-input"
-                  id="name"
-                  name="name"
-                  placeholder="name"
-                  autoComplete="name"
-                />
-              </div>
-              {/* email */}
-              <div className="form-row">
-                <label htmlFor="email" className="form-label">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  className="form-input"
-                  id="email"
-                  name="email"
-                  placeholder="email@example.com"
-                  autoComplete="email"
-                />
-              </div>
-              {/* email */}
-              <div className="form-row">
-                <label htmlFor="password" className="form-label">
-                  Password
-                </label>
-                <input
-                  type="password"
-                  className="form-input"
-                  id="password"
-                  name="password"
-                  placeholder="password"
-                  autoComplete="password"
-                />
-              </div>
+    <FormStyle>
+      <article className="form-top">
+        <h1 className="btn-com">Join our community! </h1>
+        <p className="tag-com">
+          {" "}
+          Join our community today and be a part of something truly special.
+        </p>
+      </article>
+      <main className="con">
+        <div className="formcon">
+          <form className="form" onSubmit={(event) => handleSubmit(event)}>
+            {/* name */}
+            <div className="form-row">
+              <label htmlFor="name" className="form-label">
+                Name
+              </label>
+              <input
+                type="text"
+                className="form-input"
+                id="name"
+                name="name"
+                placeholder="name"
+                autoComplete="name"
+              />
+            </div>
+            {/* email */}
+            <div className="form-row">
+              <label htmlFor="email" className="form-label">
+                Email
+              </label>
+              <input
+                type="email"
+                className="form-input"
+                id="email"
+                name="email"
+                placeholder="email@example.com"
+                autoComplete="email"
+              />
+            </div>
+            {/* email */}
+            <div className="form-row">
+              <label htmlFor="password" className="form-label">
+                Password
+              </label>
+              <input
+                type="password"
+                className="form-input"
+                id="password"
+                name="password"
+                placeholder="password"
+                autoComplete="password"
+              />
+            </div>
 
-              <button type="submit" className="btn btn-block">
-                Sign up
-              </button>
-              <button className="btn-2" type="button">
-                <div className="icon">
-                  <FcGoogle />
-                </div>
-                Sign up with Google
-              </button>
-            </form>
-          </div>
+            <button type="submit" className="btn btn-block">
+              Sign up
+            </button>
+            <button className="btn-2" type="button">
+              <div className="icon">
+                <FcGoogle />
+              </div>
+              Sign up with Google
+            </button>
+          </form>
+        </div>
 
-          <div className="imgi">
-            <Float />
-          </div>
+        <div className="imgi">
+          <Float />
+        </div>
 
-          <ToastContainer />
-        </main>
-      </FormStyle>
-    </>
+        <ToastContainer />
+      </main>
+    </FormStyle>
   );
 }
 

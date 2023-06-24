@@ -1,3 +1,5 @@
+import React from "react";
+
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
@@ -82,7 +84,7 @@ function Form() {
   };
 
   return (
-    <>
+    <div>
       <article className="form-top">
         <h1 className="btn-com">Welcome back! </h1>
         <p className="tag-com">Welcome back! Please enter your details</p>
@@ -148,7 +150,7 @@ function Form() {
         </div>
         <ToastContainer />
       </main>
-    </>
+    </div>
   );
 }
 
