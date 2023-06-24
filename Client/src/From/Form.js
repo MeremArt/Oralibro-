@@ -1,20 +1,22 @@
 import { inputs } from "../LandingPage/Data";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
 import { FcGoogle } from "react-icons/fc";
-
+import Oralibro from "../Homepage/Oralibro";
 import Float from "../Sign/FloatAnime/Float";
 import axios from "axios";
 import React from "react";
 
 import { signUp } from "../ServerFunctions";
-//Run, npm install react-toastify
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const url = ""; // Add your API endpoint here
+const url = "https://oralibro.onrender.com/api/v1/users/signup"; // Add your API endpoint here
 
 function Form() {
+  const navigate = useNavigate();
   const [value, setValue] = useState(0);
 
   const handleSubmit = async (e) => {
@@ -36,13 +38,18 @@ function Form() {
     console.log(newUser);
 
     try {
-      const resp = await axios.post(url, { name: name, email: email });
+      const resp = await axios.post(url, {
+        name: name,
+        email: email,
+        password: password,
+      });
       console.log(resp.data);
       toast.success("Sign up successful, proceed to sign in page");
+      navigate("/Oralibro");
       e.currentTarget.reset();
     } catch (error) {
       console.log(error.response);
-      toast.error("Something went wrong, we couldn't sign you in.");
+      toast.error("Something went wrong, we couldn't sign you up.");
     }
   };
 
@@ -120,7 +127,7 @@ function Form() {
           <div className="imgi">
             <Float />
           </div>
-          {/* this component is neccessary to display toast -- deckk */}
+
           <ToastContainer />
         </main>
       </FormStyle>

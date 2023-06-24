@@ -1,72 +1,95 @@
-import { input } from "../LandingPage/Data";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import "./Signin.css";
 import { useNavigate } from "react-router-dom";
-import Float from "./FloatAnime/Float";
-import React from "react";
-
 import { signIn, signInWithGoogle } from "../ServerFunctions";
-//Run, npm install react-toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Float from "./FloatAnime/Float";
+import axios from "axios";
+import Oralibro from "../Homepage/Oralibro";
+import "./Signin.css";
+
+const loginUrl = "https://oralibro.onrender.com/api/v1/users/login"; // Replace with your actual login endpoint URL
 
 function Form() {
   const [value, setValue] = useState(0);
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    console.log("Form submitted");
+    console.log("Current target:", e.currentTarget);
 
     const formData = new FormData(e.currentTarget);
 
-    // Get email and password values from form data
+    console.log("Form data:", formData);
+
     const email = formData.get("email");
     const password = formData.get("password");
 
-    // Check if any field is empty
-    if (email !== "" && password !== "") {
-      signIn(email, password).then((data) => {
-        if (data.runState) {
-          toast.success("Sign in successful, logging you in....");
-          localStorage.setItem("sessionToken", data.token);
-          window.location.href = "REPLACE_THIS_STRING_WITH_YOUR_DASHBOARD_URL"; // REDIRECT USER TO DASHBOARD
+    if (email && password) {
+      try {
+        const response = await axios.post(loginUrl, {
+          email,
+          password,
+        });
+
+        console.log("Server response:", response);
+
+        const data = response.data;
+
+        if ((response === 200, data.runState)) {
+          toast.success("Sign in successful, logging you in....", {
+            onClose: () => {
+              localStorage.setItem("sessionToken", data.token);
+              navigate("/Oralibro"); // Replace "/dashboard" with your actual dashboard page route
+            },
+          });
         } else {
           toast.error("Email or password is incorrect");
         }
-        e.currentTarget.reset();
-      });
+
+        setTimeout(() => {
+          if (e.currentTarget) {
+            e.currentTarget.reset();
+          }
+        }, 0); // Reset the form asynchronously
+      } catch (error) {
+        toast.error("Something went wrong, please try again.");
+        console.log("Error:", error);
+      }
     } else {
       toast.error("Please fill all fields");
     }
-
-    setValue(value + 1);
   };
 
   const handleSignInWithGoogle = () => {
-    // Call the signInWithGoogle function from the server functions
-    signInWithGoogle(
-      "87785613655-39u9mg0j3gb6pu8ln74s507vv97lla04.apps.googleusercontent.com"
-    ).then((data) => {
-      if (data.runState) {
-        toast.success("Sign in with Google successful, logging you in....");
-        localStorage.setItem("sessionToken", data.token);
-        window.location.href = "/oralibro"; // REDIRECT USER TO DASHBOARD
-      } else {
-        toast.error("Failed to sign in with Google");
-      }
-    });
+    signInWithGoogle("YOUR_GOOGLE_CLIENT_ID")
+      .then((data) => {
+        if (data.runState) {
+          toast.success("Sign in with Google successful, logging you in....");
+          localStorage.setItem("sessionToken", data.token);
+          navigate("/Oralibro"); // Replace "/dashboard" with your actual dashboard page route
+        } else {
+          toast.error("Failed to sign in with Google");
+        }
+      })
+      .catch((error) => {
+        toast.error("Something went wrong, please try again.");
+        console.log("Error:", error);
+      });
   };
 
   return (
     <>
       <article className="form-top">
         <h1 className="btn-com">Welcome back! </h1>
-        <p className="tag-com">Welcome back! please enter your details</p>
+        <p className="tag-com">Welcome back! Please enter your details</p>
       </article>
       <main className="con">
         <div className="formcon">
-          <form className="form" onSubmit={(event) => handleSubmit(event)}>
+          <form className="form" onSubmit={handleSubmit}>
             <div className="form-row">
               <label htmlFor="email" className="form-label">
                 Email
@@ -79,7 +102,6 @@ function Form() {
                 placeholder="email@example.com"
               />
             </div>
-            {/* Password field */}
             <div className="form-row">
               <label htmlFor="password" className="form-label">
                 Password
@@ -92,11 +114,9 @@ function Form() {
                 placeholder="password"
               />
             </div>
-            {/* Sign in button */}
             <button type="submit" className="btn btn-block">
               Sign in
             </button>
-            {/* Sign in with Google button */}
             <button
               className="btn-2"
               type="button"
@@ -107,24 +127,25 @@ function Form() {
               </div>
               Sign in with Google
             </button>
-
-            <p className="Do" style={{ color: " #CCCCCC" }}>
-              Don't have an account ?{" "}
-              <p
+            <p className="Do" style={{ color: "#CCCCCC" }}>
+              Don't have an account?{" "}
+              <span
                 className="Signup-btn"
-                onClick={() => Navigate("/Form")}
-                style={{ fontWeight: "bold", color: "#36454F" }}
+                onClick={() => navigate("/signup")}
+                style={{
+                  fontWeight: "bold",
+                  color: "#36454F",
+                  cursor: "pointer",
+                }}
               >
-                &nbsp; Sign up
-              </p>
+                Sign up
+              </span>
             </p>
           </form>
         </div>
-
         <div className="imgi">
           <Float />
         </div>
-        {/* this component is necessary to display toast --decklan */}
         <ToastContainer />
       </main>
     </>

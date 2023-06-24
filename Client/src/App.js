@@ -12,23 +12,21 @@ import BookDetails from "./Homepage/Pages/Discover components/BookDetails";
 
 function App() {
   return (
-    <>
-      <AppProvider>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/form" element={<Form />} />
-          <Route path="/sign-in" element={<Signin />} />
-          <Route path="*" element={<Nomatch />} />
-          <Route path="/oralibro/*" element={<Oralibro />}>
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="discover" element={<Discover />}>
-              <Route path="book" element={<Booklist />} />
-              <Route path="book/:id" element={<BookDetails />} />
-            </Route>
+    <AppProvider>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/form" element={<Form />} />
+        <Route path="/sign-in" element={<Signin />} />
+        <Route path="*" element={<Nomatch />} />
+        <Route path="/oralibro/*" element={<Oralibro />}>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="discover" element={<Discover />}>
+            <Route path="book" element={<Booklist />} />
+            <Route path="book/:id" element={<BookDetails />} />
           </Route>
-        </Routes>
-      </AppProvider>
-    </>
+        </Route>
+      </Routes>
+    </AppProvider>
   );
 }
 
