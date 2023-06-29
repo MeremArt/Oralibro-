@@ -1,0 +1,33 @@
+.eat {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.pip {
+  position: relative;
+  margin: auto;
+  left: 0px;
+  right: 0px;
+  top: 100px;
+  width: 200px;
+  height: 200px;
+}
+.xo {
+  margin-top: 100px;
+}
+.Goback-btn {
+  background-color: #e95900;
+  color: white;
+  border-radius: 8px;
+  padding: 14px 20px;
+  font-size: 18px;
+  margin-left: 5px;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+  display: inline;
+}
+.Goback-btn:hover {
+  background-color: #cc4a02;
+}
