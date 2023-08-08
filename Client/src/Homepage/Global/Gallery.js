@@ -8,7 +8,7 @@ import "./Gallery.css";
 import BookPreview from "./BookPreview";
 
 const apiKey = process.env.REACT_APP_API_KEY;
-const url = `https://www.googleapis.com/books/v1/volumes?key=${apiKey}`;
+const url = `https://www.googleapis.com/books/v1/volumes?key=AIzaSyD-fK-5tCyclgwAO_h3aYmddp-FpKC-cuE`;
 
 const Gallery = () => {
   const { searchTerm } = useGlobalContext();

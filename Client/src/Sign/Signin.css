@@ -196,9 +196,10 @@ body {
 }
 .imgi {
   display: flex;
-  flex: 2;
+  flex: 1 1;
   position: relative;
-  bottom: 115px;
+  bottom: 200px;
+  margin-right: 100px;
 }
 .form-textarea {
   height: 7rem;

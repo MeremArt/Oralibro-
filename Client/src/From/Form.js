@@ -1,17 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import Float from "../Sign/FloatAnime/Float";
 import axios from "axios";
 import React from "react";
-import { signUp } from "../ServerFunctions";
+import jwt_Decode from "jwt-decode";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { async } from "@firebase/util";
 
 const url = "https://oralibro.onrender.com/api/v1/users/signup"; // Add your API endpoint here
 
 function Form() {
+  const [user, setUser] = useState({});
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -28,7 +30,7 @@ function Form() {
       toast.error("Please fill all fields");
       return;
     }
-    console.log(formData);
+
     setIsLoading(true);
 
     try {
@@ -53,6 +55,44 @@ function Form() {
     }
   };
 
+  function handleCallbackResponse(response, e) {
+    console.log("Encoded JWT ID token: " + response.credential);
+    const userObject = jwt_Decode(response.credential);
+    console.log(userObject);
+    setUser(userObject);
+    const isEmailVerified = user.email_verified === true;
+
+    if (isEmailVerified) {
+      toast.success("Sign up successful, proceed to sign in page");
+      navigate("/Oralibro");
+      e.currentTarget.reset();
+    }
+  }
+
+  useEffect(() => {
+    /* global google */
+    google.accounts.id.initialize({
+      client_id:
+        "87785613655-fakabrj7682oj5g37un7b2q0q89bgc2v.apps.googleusercontent.com",
+      callback: handleCallbackResponse,
+    });
+    google.accounts.id.renderButton(document.getElementById("signInDiv"), {
+      theme: "outline",
+      size: "large",
+      width: "100%",
+    });
+  }, []);
+
+  // const GoogleSignup = async (e) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     const resp = await axios.get(baleurl);
+  //     console.log(resp.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
   return (
     <>
       <FormStyle>
@@ -111,12 +151,7 @@ function Form() {
               >
                 {isLoading ? "Creating account..." : "Create account"}
               </button>
-              <button className="btn-2" type="button">
-                <div className="icon">
-                  <FcGoogle />
-                </div>
-                Sign up with Google
-              </button>
+              <div id="signInDiv"></div>
             </form>
           </div>
 
@@ -229,17 +264,20 @@ const FormStyle = styled.section`
     display: flex;
   }
   .imgj {
-    margin-left: 120px;
+    margin-left: 10px;
     height: 100vh;
     width: 50vh;
 
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    flex: 1;
+    flex: 1 1;
   }
   .form-top {
     margin-right: 60px;
+  }
+  .sigin-but {
+    width: 100%;
   }
 `;
 

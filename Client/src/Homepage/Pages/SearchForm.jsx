@@ -15,6 +15,9 @@ export default function SearchBar() {
     setSearchTerm(searchQuery);
   };
 
+  useEffect(() => {
+    searchInputRef.current.focus();
+  });
   return (
     <InputWrapper>
       <form onSubmit={handleSubmit}>
